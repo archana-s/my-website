@@ -1,0 +1,58 @@
+<dom-module id="about-me">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: none;
+      }
+
+      :host([active]) {
+        display: block;
+      }
+
+      a {
+        text-decoration: none;
+        color: #0EC994;
+        font-size: 17px;
+        font-weight: 400;
+      }
+      a:focus, a:hover {
+        text-decoration: underline;
+      }
+      li {
+        margin-bottom: 20px;
+      }
+    </style>
+    <section>
+      <ul>
+        <li>I grew up in a little village near <a href="https://www.google.com/maps/place/Coimbatore,+Tamil+Nadu,+India/data=!4m2!3m1!1s0x3ba859af2f971cb5:0x2fc1c81e183ed282?sa=X&ved=0ahUKEwiZ1oum3JXRAhXLhFQKHQIgC8cQ8gEIGTAA">Coimbatore</a>.</li>
+        <li>I live in <a href="https://www.google.com/maps/place/Palo+Alto,+CA/@37.4256448,-122.1703695,13z/data=!3m1!4b1!4m5!3m4!1s0x808fb07b9dba1c39:0xe1ff55235f576cf!8m2!3d37.4418834!4d-122.1430195">Palo Alto</a> now.</li>
+        <li>But dreaming about Barcelona.</li>
+        <li>I write <a href="https://github.com/archana-s">code</a> in html, css and js.</li>
+        <li>My latest obsessions are styleguides, PostCSS and Polymer.</li>
+        <li>I have been enjoying Netflix since its early days and recently a big fan of Netflix Originals.</li>
+        <li>I recently decided to work with some awesome people in <a href="https://www.youtube.com/channel/UC982rJrqapFENJTMGMW6iyA">Engineering Tools</a> at Netflix.</li>
+        <li>If I am not working, I am definitely cooking.</li>
+      </ul>
+    </section>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    class AboutMe extends Polymer.Element {
+      static get is() { return 'about-me'; }
+      static get config() {
+        return {
+          properties: {
+            active: {
+              type: Boolean
+            }
+          }
+        }
+      }
+    }
+    customElements.define(AboutMe.is, AboutMe);
+  })();
+  </script>
+</dom-module>

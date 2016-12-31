@@ -1,0 +1,25 @@
+<dom-module id="my-blog">
+  <template>
+    <style>
+      :host {
+        display: none;
+      }
+
+      :host([active]) {
+        display: block;
+      }
+    </style>
+    Hello Blog.
+  </template>
+
+  <script>
+  (function() {
+    'use strict';
+
+    class MyBlog extends Polymer.Element {
+      static get is() { return 'my-blog'; }
+    }
+    customElements.define(MyBlog.is, MyBlog);
+  })();
+  </script>
+</dom-module>

@@ -1,0 +1,34 @@
+<dom-module id="side-nav">
+  <template>
+
+
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    class SideNav extends Polymer.Element {
+      static get is() { return 'side-nav'; }
+      static get config() {
+        return {
+          properties: {
+            pageData: Object,
+            pageActive: String,
+            pageTail: String,
+            route: {
+              observer: '_routeChanged'
+            }
+          }
+        }
+      }
+      ready() {
+        super.ready();
+      }
+      _routeChanged() {
+        debugger;
+      }
+    }
+    customElements.define(SideNav.is, SideNav);
+  })();
+  </script>
+</dom-module>

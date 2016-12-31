@@ -1,0 +1,33 @@
+<dom-module id="main-card">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host .card {
+        -webkit-box-shadow: 10px 10px 24px -4px rgba(0,0,0,0.75);
+        -moz-box-shadow: 10px 10px 24px -4px rgba(0,0,0,0.75);
+        box-shadow: 10px 10px 24px -4px rgba(0,0,0,0.75);
+        background-color: white;
+        margin: 32px;
+        padding: 24px 32px;
+      }
+    </style>
+    <div id="card" class="card box">
+      <slot></slot>
+    </div>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    class MainCard extends Polymer.Element {
+      static get is() { return 'main-card'; }
+      ready() {
+        super.ready();
+        this.$.card.style.minHeight = window.innerHeight * 0.8 + 'px';
+      }
+    }
+
+    customElements.define(MainCard.is, MainCard);
+  })();
+  </script>
+</dom-module>

@@ -1,0 +1,182 @@
+<dom-module id="my-work">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: none;
+      }
+
+      :host([active]) {
+        display: block;
+      }
+
+      :host * {
+        box-sizing: border-box;
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      li {
+        position: relative;
+        margin: 12px 16px;
+      }
+
+      li > a > div {
+        width: 206px;
+        height: 240px;
+      }
+
+      .content {
+        position: absolute;
+        top: calc(50% - 105px);
+        left: calc(50% - 88px);
+        background-color: rgba(255, 255, 255, 0.96);
+        width: 175px;
+        height: 210px;
+        display: flex;
+        flex-direction: column;
+        padding: 12px 12px;
+      }
+
+      footer {
+        width: 100%;
+        align-self: flex-end;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      footer > img {
+        margin-right: 6px;
+        align-self: flex-end;
+        margin-bottom: 4px;
+      }
+
+      footer span {
+        margin-right: 4px;
+        margin-bottom: 2px;
+      }
+
+      footer > div {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1;
+      }
+
+      header {
+        flex: 1;
+      }
+
+      h4 {
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      h5 {
+        margin-top: 8px;
+      }
+
+      .icon {
+        width: 14px;
+        height: 14px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a > div {
+        border: 2px solid transparent;
+      }
+
+      a:hover > div, a:focus > div {
+        border: 2px solid black;
+      }
+
+      li:nth-child(6n+1) .card {
+        background-color: #83B1D4;
+      }
+
+      li:nth-child(6n+2) .card {
+        background-color: #9DCC99;
+      }
+
+      li:nth-child(6n+3) .card {
+        background-color: #995E48;
+      }
+
+      li:nth-child(6n+4) .card {
+        background-color: #EA7A59;
+      }
+
+      li:nth-child(6n+5) .card{
+        background-color: #FFB8BB;
+      }
+
+      li:nth-child(6n+6) .card {
+        background-color: #524656;
+      }
+
+      .tag {
+        font-size: 9px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 2px 3px;
+        color: #555;
+        background-color: #E2E2E2;
+      }
+
+    </style>
+    <section class="box wrap">
+      <ul>
+        <template is="dom-repeat" items="{{work}}">
+          <li>
+            <a href="{{item.link}}" target="_blank">
+              <div class="card">
+                <div class="content">
+                  <header>
+                    <h4>{{item.title}}</h4>
+                    <h5>{{item.description}}</h5>
+                  </header>
+                  <footer>
+                    <img class="icon" src="{{item.sourceImg}}">
+                    <div>
+                      <template is="dom-repeat" items="{{item.tags}}">
+                        <span class="tag">{{item}}</span>
+                      </template>
+                    </div>
+                  </footer>
+                </div>
+              </div>
+            </a>
+          </li>
+        </template>
+      </ul>
+    </section>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    class MyWork extends Polymer.Element {
+      static get is() { return 'my-work'; }
+      static get config() {
+        return {
+          properties: {
+            work: Array
+          }
+        }
+      }
+      ready() {
+        super.ready();
+        this.set('work', workData);
+      }
+    }
+    customElements.define(MyWork.is, MyWork);
+  })();
+  </script>
+</dom-module>

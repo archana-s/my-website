@@ -1,0 +1,76 @@
+<dom-module id="shared-styles">
+  <template>
+    <style>
+      ul, li {
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        margin: 4px 0;
+        list-style-type: none;
+        font-size: 16px;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      li.selected {
+        color: #ABABAB;
+      }
+
+      a {
+        cursor: pointer;
+      }
+
+      a.nostyle {
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+      }
+
+      a.nostyle:focus, a.nostyle:hover {
+        text-decoration: underline;
+      }
+
+      a.nostyle, a.nostyle:focus, a.nostyle:hover {
+        color: inherit;
+      }
+
+      h1 {
+        font-family: 'Dancing Script', cursive;
+        font-weight: bold;
+        font-size: 32px;
+        padding: 0;
+        margin: 0;
+      }
+
+      h2, h3, h4, h5, h6 {
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+      }
+
+      p, div, span {
+        font-family: 'Open Sans', sans-serif;
+        letter-spacing: 0.03em;
+      }
+
+      .box {
+        display: flex;
+      }
+
+      .wrap {
+        flex-wrap: wrap;
+      }
+    </style>
+
+  <script>
+  (function() {
+    'use strict';
+
+    class SharedStyles extends Polymer.Element {
+      static get is() { return 'shared-styles'; }
+    }
+    customElements.define(SharedStyles.is, SharedStyles);
+  })();
+  </script>
+</dom-module>

@@ -1,0 +1,108 @@
+<dom-module id="nav-manager">
+
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: flex;
+      }
+
+      .side-nav {
+        padding-right: 12px;
+        flex: 0 0 260px;
+      }
+
+      ul {
+        width: 240px;
+        margin-top: 40px;
+      }
+
+      li {
+        margin: 12px auto;
+        font-size: 16px;
+        font-family: 'Open Sans', sans-serif;
+        color: #333;
+      }
+
+      h1, h2, nav {
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 16px;
+        color: #AAA;
+        margin-top: 8px;
+      }
+
+      header {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #EEE;
+      }
+
+      .netflix-link, .netflix-link:hover, .netflix-link:focus {
+        color: #E40914;
+        text-decoration: none;
+      }
+
+      .profile-image {
+        width: 90px;
+        height: 90px;
+        border-radius: 100%;
+        background-size: cover;
+        background-position: 0 0;
+        margin: 0 auto 12px;
+      }
+
+      main {
+        padding-left: 32px;
+        margin-left: 12px;
+        flex: 1;
+        border-left: 1px solid #EEE;
+      }
+
+    </style>
+    <section class="side-nav">
+      <header>
+        <div class="profile-image" style="background-image: url('/assets/myprofile.png');"></div>
+        <h1>Archana Sankaranarayanan</h1>
+        <h2>UI Engineering at <a class="netflix-link" href="https://www.netflix.com/">Netflix</a></h2>
+      </header>
+
+      <app-location route="{{route}}" use-hash-as-path></app-location>
+      <app-route route="{{route}}" pattern="/:page" tail="{{pageTail}}" data="{{pageData}}" active="{{pageActive}}"></app-route>
+
+      <nav>
+        <ul>
+          <iron-selector selected="[[pageData.page]]" attr-for-selected="data-page">
+            <li><a class="nostyle" href="#/about" data-page="about">About</a></li>
+            <li><a class="nostyle" href="#/work"  data-page="work">Work</a></li>
+            <li><a class="nostyle" href="#/blog" data-page="blog">Blog</a></li>
+            <li><a class="nostyle" href="/talks">Talks</a></li>
+            <li><a class="nostyle" href="/reading">Reading</a></li>
+            <li><a class="nostyle" href="/contact">Contact</a></li>
+          </iron-selector>
+        </ul>
+      </nav>
+    </section>
+
+    <main>
+      <all-pages route="{{route}}" active="[[pageData.page]]"></all-pages>
+    </main>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+
+    class NavManager extends Polymer.Element {
+      static get is() { return 'nav-manager'; }
+      ready() {
+        super.ready();
+        if (!this.route.path) {
+          this.set('route.path', '/about');
+        }
+      }
+    }
+    customElements.define(NavManager.is, NavManager);
+  })();
+  </script>
+</dom-module>

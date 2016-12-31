@@ -1,0 +1,22 @@
+<dom-module id="all-pages">
+  <template>
+    <app-route route="{{route}}" pattern="/work" active="{{workActive}}"></app-route>
+    <app-route route="{{route}}" pattern="/about" active="{{aboutmeActive}}"></app-route>
+    <app-route route="{{route}}" pattern="/blog" active="{{blogActive}}"></app-route>
+
+    <my-work active$="{{workActive}}"></my-work>
+    <about-me active$="{{aboutmeActive}}"></about-me>
+    <my-blog active$="{{blogActive}}"></my-blog>
+  </template>
+
+  <script>
+  (function() {
+    'use strict';
+
+    class AllPages extends Polymer.Element {
+      static get is() { return 'all-pages'; }
+    }
+    customElements.define(AllPages.is, AllPages);
+  })();
+  </script>
+</dom-module>
