@@ -1,0 +1,89 @@
+<dom-module id="my-reading">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: none;
+      }
+
+      :host([active]) {
+        display: block;
+      }
+
+      h3 {
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+      p {
+        line-height: 1.5em;
+        margin: 0;
+        font-size: 12px;
+      }
+      section {
+        margin-bottom: 20px;
+      }
+    </style>
+    <section class="contents">
+      <section>
+        <h3>
+          <a class="tinted" target="_blank" href="https://www.goodreads.com/user/year_in_books/2016/16768668">My 2016 in books</a>
+        </h3>
+      </section>
+      <section>
+        <h3> My current reading list </h3>
+        <style type="text/css" media="screen">
+          .gr_grid_container {
+            /* customize grid container div here. eg: width: 500px; */
+            display: flex;
+            margin-top: 12px;
+          }
+
+          .gr_grid_book_container {
+            /* customize book cover container div here */
+            width: 98px;
+            height: 160px;
+            padding: 0px 12px 0 0;
+            overflow: hidden;
+          }
+        </style>
+          <div id="gr_grid_widget_1483680913">
+          <!-- Show static html as a placeholder in case js is not enabled - javascript include will override this if things work -->
+            <div class="gr_grid_container">
+          <div class="gr_grid_book_container"><a title="Orange: The Complete Collection, Vol. 2" href="https://www.goodreads.com/book/show/26247042-orange"><img alt="Orange: The Complete Collection, Vol. 2" border="0" src="https://images.gr-assets.com/books/1463161823m/26247042.jpg" /></a></div>
+          <div class="gr_grid_book_container"><a title="What Works: Gender Equality by Design" href="https://www.goodreads.com/book/show/27311743-what-works"><img alt="What Works: Gender Equality by Design" border="0" src="https://images.gr-assets.com/books/1454202582m/27311743.jpg" /></a></div>
+          <div class="gr_grid_book_container"><a title="The 2 1/2 Pillars of Wisdom (Portuguese Irregular Verbs, #1-3)" href="https://www.goodreads.com/book/show/875302.The_2_1_2_Pillars_of_Wisdom"><img alt="The 2 1/2 Pillars of Wisdom" border="0" src="https://images.gr-assets.com/books/1442814824m/875302.jpg" /></a></div>
+          <div class="gr_grid_book_container"><a title="Cosmicomics" href="https://www.goodreads.com/book/show/59780.Cosmicomics"><img alt="Cosmicomics" border="0" src="https://images.gr-assets.com/books/1327975008m/59780.jpg" /></a></div>
+          <noscript><br/>Share <a href="/">book reviews</a> and ratings with Archana, and even join a <a href="/group">book club</a> on Goodreads.</noscript>
+          </div>
+
+          </div>
+          <script src="https://www.goodreads.com/review/grid_widget/16768668.Archana's%20currently-reading%20book%20montage?cover_size=medium&hide_link=true&hide_title=true&num_books=20&order=d&shelf=currently-reading&sort=date_started&widget_id=1483680913" type="text/javascript" charset="utf-8"></script>
+      </section>
+
+      <footer>
+        <p>My motivation for this section is to become like <a href="http://www.takram.com/projects/a-single-room-with-a-single-book-morioka-shoten/">Morioka Shoten</a>.</p>
+        <p>A bookstore that sells one and only book every week giving a lot of information about the book, author and everything related. </p>
+        <p>But for now, bear with my plugins from Goodreads.</p>
+      </footer>
+    </section>
+  </template>
+
+  <script>
+  (function() {
+    'use strict';
+
+    class MyReading extends Polymer.Element {
+      static get is() { return 'my-reading'; }
+      static get config() {
+        return {
+          properties: {
+            active: Boolean
+          }
+        }
+      }
+    }
+    customElements.define(MyReading.is, MyReading);
+  })();
+  </script>
+</dom-module>

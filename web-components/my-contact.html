@@ -1,0 +1,58 @@
+<dom-module id="my-contact">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: none;
+      }
+
+      :host([active]) {
+        display: block;
+      }
+
+      .box {
+        display: flex;
+      }
+
+      .box > * {
+        margin-right: 12px;
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+      }
+    </style>
+    <section>
+      <div class="box">
+        <a href="https://github.com/archana-s">
+          <img class="icon" src="/assets/github.svg">
+        </a>
+        <a href="https://twitter.com/archana_june">
+          <img class="icon" src="/assets/twitter.png">
+        </a>
+      </div>
+      <p>
+        <a class="tinted" href="mailto:archana.june@gmail.com">Email me</a> only if you are not a recruiter.</a>
+      </p>
+    </section>
+  </template>
+
+  <script>
+  (function() {
+    'use strict';
+
+    class MyContact extends Polymer.Element {
+      static get is() { return 'my-contact'; }
+      static get config() {
+        return {
+          properties: {
+            active: Boolean
+          }
+        }
+      }
+    }
+    customElements.define(MyContact.is, MyContact);
+  })();
+  </script>
+</dom-module>

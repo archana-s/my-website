@@ -18,6 +18,13 @@
 
     class MyBlog extends Polymer.Element {
       static get is() { return 'my-blog'; }
+      static get config() {
+        return {
+          properties: {
+            active: Boolean
+          }
+        }
+      }
     }
     customElements.define(MyBlog.is, MyBlog);
   })();

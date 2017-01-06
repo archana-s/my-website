@@ -14,8 +14,8 @@ var workData = [
     tags: ['postcss', 'react']
   },
   {
-    title: 'Webcomponents Template',
-    description: 'Simple template using React/Polymer/Webpack. Under works.',
+    title: 'Webcomponents in a framework',
+    description: 'Using Polymer for creating webcomponents inside React.js',
     link: '',
     sourceImg: 'assets/github.svg',
     tags: ['react', 'polymer']

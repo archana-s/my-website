@@ -3,10 +3,14 @@
     <app-route route="{{route}}" pattern="/work" active="{{workActive}}"></app-route>
     <app-route route="{{route}}" pattern="/about" active="{{aboutmeActive}}"></app-route>
     <app-route route="{{route}}" pattern="/blog" active="{{blogActive}}"></app-route>
+    <app-route route="{{route}}" pattern="/contact" active="{{contactActive}}"></app-route>
+    <app-route route="{{route}}" pattern="/reading" active="{{readingActive}}"></app-route>
 
     <my-work active$="{{workActive}}"></my-work>
     <about-me active$="{{aboutmeActive}}"></about-me>
     <my-blog active$="{{blogActive}}"></my-blog>
+    <my-contact active$="{{contactActive}}"></my-contact>
+    <my-reading active$="{{readingActive}}"></my-reading>
   </template>
 
   <script>
