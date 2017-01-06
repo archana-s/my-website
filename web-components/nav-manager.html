@@ -68,17 +68,17 @@
         <h2>UI Engineering at <a class="netflix-link" href="https://www.netflix.com/">Netflix</a></h2>
       </header>
 
-      <app-location route="{{route}}" use-hash-as-path></app-location>
+      <app-location route="{{route}}"></app-location>
       <app-route route="{{route}}" pattern="/:page" tail="{{pageTail}}" data="{{pageData}}" active="{{pageActive}}"></app-route>
 
       <nav>
         <ul>
           <iron-selector selected="[[pageData.page]]" attr-for-selected="data-page">
-            <li><a class="nostyle" href="#/about" data-page="about">About</a></li>
-            <li><a class="nostyle" href="#/work"  data-page="work">Work</a></li>
-            <li><a class="nostyle" href="#/blog" data-page="blog">Blog</a></li>
-            <li><a class="nostyle" href="#/reading">Reading</a></li>
-            <li><a class="nostyle" href="#/contact" data-page="contact">Contact</a></li>
+            <li><a class="nostyle" href="/about" data-page="about">About</a></li>
+            <li><a class="nostyle" href="/work"  data-page="work">Work</a></li>
+            <li><a class="nostyle" href="/blog" data-page="blog">Blog</a></li>
+            <li><a class="nostyle" href="/reading">Reading</a></li>
+            <li><a class="nostyle" href="/contact" data-page="contact">Contact</a></li>
           </iron-selector>
         </ul>
       </nav>
@@ -96,7 +96,8 @@
       static get is() { return 'nav-manager'; }
       ready() {
         super.ready();
-        if (!this.route.path) {
+
+        if (!this.route.path || this.route.path === '/') {
           this.set('route.path', '/about');
         }
       }
