@@ -24,6 +24,10 @@
         color: #333;
       }
 
+      li a.selected {
+        color: #0EC994;
+      }
+
       h1, h2, nav {
         text-align: center;
       }
@@ -94,12 +98,27 @@
 
     class NavManager extends Polymer.Element {
       static get is() { return 'nav-manager'; }
+
+      static get config() {
+        return {
+          properties: {
+            route: {
+              observer: '_routeChanged'
+            }
+          }
+        }
+      }
+
       ready() {
         super.ready();
 
         if (!this.route.path || this.route.path === '/') {
           this.set('route.path', '/about');
         }
+      }
+
+      _routeChanged() {
+        // change color
       }
     }
     customElements.define(NavManager.is, NavManager);
