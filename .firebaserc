@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "prod": "website-fe361",
+    "default": "website-fe361"
+  }
+}
