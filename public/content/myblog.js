@@ -1,5 +1,12 @@
 var blogData = [
   {
+    title: 'Firebase custom domain setup with GoDaddy',
+    tags: '#WebDeploy #customURL #hosting',
+    date: 'Jan 15',
+    year: '2017',
+    link: 'https://medium.com/@archana_june/firebase-custom-domain-setup-with-godaddy-8b7acf66ccec#.zawhkgkbf'
+  },
+  {
     title: 'Build complex layouts with postcss-flexbox',
     tags: '#postcss-flexbox #flexbox #fancy-layouts-easy',
     date: 'Nov 11',
