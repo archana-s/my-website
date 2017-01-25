@@ -65,6 +65,8 @@
       }
 
     </style>
+    <iron-media-query query="(min-width: 400px)" query-matches="{{largerThanPhone}}"></iron-media-query>
+
     <section class="side-nav">
       <header>
         <div class="profile-image" style="background-image: url('/public/assets/myprofile.png');"></div>
@@ -85,6 +87,39 @@
             <li data-page="contact"><a class="nostyle" href="/?page=contact">Contact</a></li>
           </iron-selector>
         </ul>
+
+        <template is="dom-if" if="{{!largerThanPhone}}">
+          <ul>
+            <iron-selector attr-for-selected="data-page">
+              <li data-page="about">
+                <a class="nostyle" href="/?page=about">
+                  <iron-icon icon="maps:directions-bus"></iron-icon>
+                </a>
+              </li>
+              <li data-page="work">
+                <a class="nostyle" href="/?page=work">
+                  <iron-icon icon="maps:directions-bus"></iron-icon>
+                </a>
+              </li>
+              <li data-page="blog">
+                <a class="nostyle" href="/?page=blog">
+                  <iron-icon icon="maps:directions-bus"></iron-icon>
+                </a>
+              </li>
+              <li data-page="reading">
+                <a class="nostyle" href="/?page=reading">
+                  <iron-icon icon="maps:directions-bus"></iron-icon>
+                </a>
+              </li>
+              <li data-page="contact">
+                <a class="nostyle" href="/?page=contact">
+                  <iron-icon icon="maps:directions-bus"></iron-icon>
+                </a>
+              </li>
+            </iron-selector>
+          </ul>
+        </template>
+
       </nav>
     </section>
 

@@ -24,7 +24,9 @@
     "polymer": "Polymer/polymer#2.0-preview",
     "iron-pages": "PolymerElements/iron-pages#~1.0.8",
     "app-route": "PolymerElements/app-route#2.0-preview",
-    "iron-selector": "PolymerElements/iron-selector#~1.5.2"
+    "iron-selector": "PolymerElements/iron-selector#~1.5.2",
+    "iron-media-query": "PolymerElements/iron-media-query#~1.0.8",
+    "iron-icons": "PolymerElements/iron-icons#~1.2.0"
   },
   "resolutions": {
     "polymer": "2.0-preview",
