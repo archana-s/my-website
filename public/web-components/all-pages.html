@@ -1,16 +1,10 @@
 <dom-module id="all-pages">
   <template>
-    <app-route route="{{route}}" pattern="/work" active="{{workActive}}"></app-route>
-    <app-route route="{{route}}" pattern="/about" active="{{aboutmeActive}}"></app-route>
-    <app-route route="{{route}}" pattern="/blog" active="{{blogActive}}"></app-route>
-    <app-route route="{{route}}" pattern="/contact" active="{{contactActive}}"></app-route>
-    <app-route route="{{route}}" pattern="/reading" active="{{readingActive}}"></app-route>
-
-    <my-work active$="{{workActive}}"></my-work>
-    <about-me active$="{{aboutmeActive}}"></about-me>
-    <my-blog active$="{{blogActive}}"></my-blog>
-    <my-contact active$="{{contactActive}}"></my-contact>
-    <my-reading active$="{{readingActive}}"></my-reading>
+    <my-work active$="{{isWorkActive}}"></my-work>
+    <about-me active$="{{isAboutActive}}"></about-me>
+    <my-blog active$="{{isBlogActive}}"></my-blog>
+    <my-contact active$="{{isContactActive}}"></my-contact>
+    <my-reading active$="{{isReadingActive}}"></my-reading>
   </template>
 
   <script>
@@ -19,6 +13,39 @@
 
     class AllPages extends Polymer.Element {
       static get is() { return 'all-pages'; }
+      static get config() {
+        return {
+          properties: {
+            active: {
+              observer: '_activePageChanged'
+            },
+            isWorkActive: Boolean,
+            isAboutActive: Boolean,
+            isBlogActive: Boolean,
+            isContactActive: Boolean,
+            isReadingActive: Boolean
+          }
+        }
+      }
+      _activePageChanged() {
+        this.isWorkActive = false;
+        this.isAboutActive = false;
+        this.isBlogActive = false;
+        this.isContactActive = false;
+        this.isReadingActive = false;
+        switch(this.active) {
+          case 'about':
+            this.isAboutActive = true; break;
+          case 'work':
+            this.isWorkActive = true; break;
+          case 'reading':
+            this.isReadingActive = true; break;
+          case 'blog':
+            this.isBlogActive = true; break;
+          case 'contact':
+            this.isContactActive = true; break;
+        }
+      }
     }
     customElements.define(AllPages.is, AllPages);
   })();

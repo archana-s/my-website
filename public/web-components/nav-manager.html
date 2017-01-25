@@ -24,7 +24,7 @@
         color: #333;
       }
 
-      li a.selected {
+      li.iron-selected > a, li.iron-selected > a:active, li.iron-selected > a:focus {
         color: #0EC994;
       }
 
@@ -73,23 +73,23 @@
       </header>
 
       <app-location route="{{route}}"></app-location>
-      <app-route route="{{route}}" pattern="/:page" tail="{{pageTail}}" data="{{pageData}}" active="{{pageActive}}"></app-route>
+      <app-route route="{{route}}" pattern="/?page=:page"></app-route>
 
       <nav>
         <ul>
-          <iron-selector selected="[[pageData.page]]" attr-for-selected="data-page">
-            <li><a class="nostyle" href="/about" data-page="about">About</a></li>
-            <li><a class="nostyle" href="/work"  data-page="work">Work</a></li>
-            <li><a class="nostyle" href="/blog" data-page="blog">Blog</a></li>
-            <li><a class="nostyle" href="/reading">Reading</a></li>
-            <li><a class="nostyle" href="/contact" data-page="contact">Contact</a></li>
+          <iron-selector attr-for-selected="data-page" id="ironSelector">
+            <li data-page="about"><a class="nostyle" href="/?page=about">About</a></li>
+            <li data-page="work"><a class="nostyle" href="/?page=work">Work</a></li>
+            <li data-page="blog"><a class="nostyle" href="/?page=blog">Blog</a></li>
+            <li data-page="reading"><a class="nostyle" href="/?page=reading">Reading</a></li>
+            <li data-page="contact"><a class="nostyle" href="/?page=contact">Contact</a></li>
           </iron-selector>
         </ul>
       </nav>
     </section>
 
     <main>
-      <all-pages route="{{route}}" active="[[pageData.page]]"></all-pages>
+      <all-pages active="{{route.__queryParams.page}}"></all-pages>
     </main>
   </template>
   <script>
@@ -104,6 +104,9 @@
           properties: {
             route: {
               observer: '_routeChanged'
+            },
+            activePage: {
+              type: String
             }
           }
         }
@@ -112,13 +115,10 @@
       ready() {
         super.ready();
 
-        if (!this.route.path || this.route.path === '/') {
-          this.set('route.path', '/about');
+        if (!this.route.__queryParams || !this.route.__queryParams.page) {
+          this.set('route.__queryParams', {page: 'about'});
         }
-      }
-
-      _routeChanged() {
-        // change color
+        this.$.ironSelector.selected = this.route.__queryParams.page;
       }
     }
     customElements.define(NavManager.is, NavManager);
