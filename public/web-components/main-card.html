@@ -36,7 +36,7 @@
       static get is() { return 'main-card'; }
       ready() {
         super.ready();
-        this.$.card.style.minHeight = window.outerHeight * 0.8 + 'px';
+        this.$.card.style.minHeight = window.innerHeight * 0.8 + 'px';
       }
     }
 
