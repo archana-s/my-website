@@ -10,10 +10,24 @@
       body {
         background-color: #2d2d2d;
       }
+      @media only screen
+        and (min-device-width: 320px)
+        and (max-device-width: 480px) {
+          body {
+            background-color: white;
+          }
+      }
       main {
         padding-left: 40px;
         margin-left: 10px;
         border-left: 1px solid #EEE;
+      }
+      @media only screen
+        and (min-device-width: 320px)
+        and (max-device-width: 480px) {
+          main {
+            border: 0;
+          }
       }
     </style>
     <script src="/public/content/mywork.js"></script>

@@ -5,6 +5,7 @@
     <style>
       :host {
         display: flex;
+        flex-wrap: wrap;
       }
 
       .side-nav {
@@ -12,9 +13,37 @@
         flex: 0 0 260px;
       }
 
-      ul {
-        width: 240px;
-        margin-top: 40px;
+      @media only screen
+        and (min-device-width: 320px)
+        and (max-device-width: 480px) {
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          border-bottom: 1px solid #EEE;
+          margin-bottom: 14px;
+        }
+
+        li {
+          margin-bottom: 4px;
+          min-width: 58px;
+        }
+
+        :host {
+          display: block;
+        }
+      }
+
+      @media (min-width: 480px) {
+        ul {
+          margin-top: 40px;
+        }
+
+        main {
+          padding-left: 32px;
+          margin-left: 12px;
+          flex: 1;
+          border-left: 1px solid #EEE;
+        }
       }
 
       li {
@@ -26,6 +55,10 @@
 
       li.iron-selected > a, li.iron-selected > a:active, li.iron-selected > a:focus {
         color: #0EC994;
+      }
+
+      h1 {
+        font-size: 32px;
       }
 
       h1, h2, nav {
@@ -57,15 +90,8 @@
         margin: 0 auto 12px;
       }
 
-      main {
-        padding-left: 32px;
-        margin-left: 12px;
-        flex: 1;
-        border-left: 1px solid #EEE;
-      }
-
     </style>
-    <iron-media-query query="(min-width: 400px)" query-matches="{{largerThanPhone}}"></iron-media-query>
+    <iron-media-query query="(min-width:400px)" query-matches="{{largerThanPhone}}"></iron-media-query>
 
     <section class="side-nav">
       <header>
@@ -78,48 +104,15 @@
       <app-route route="{{route}}" pattern="/?page=:page"></app-route>
 
       <nav>
-        <ul>
-          <iron-selector attr-for-selected="data-page" id="ironSelector">
-            <li data-page="about"><a class="nostyle" href="/?page=about">About</a></li>
-            <li data-page="work"><a class="nostyle" href="/?page=work">Work</a></li>
-            <li data-page="blog"><a class="nostyle" href="/?page=blog">Blog</a></li>
-            <li data-page="reading"><a class="nostyle" href="/?page=reading">Reading</a></li>
-            <li data-page="contact"><a class="nostyle" href="/?page=contact">Contact</a></li>
-          </iron-selector>
-        </ul>
-
-        <template is="dom-if" if="{{!largerThanPhone}}">
           <ul>
-            <iron-selector attr-for-selected="data-page">
-              <li data-page="about">
-                <a class="nostyle" href="/?page=about">
-                  <iron-icon icon="maps:directions-bus"></iron-icon>
-                </a>
-              </li>
-              <li data-page="work">
-                <a class="nostyle" href="/?page=work">
-                  <iron-icon icon="maps:directions-bus"></iron-icon>
-                </a>
-              </li>
-              <li data-page="blog">
-                <a class="nostyle" href="/?page=blog">
-                  <iron-icon icon="maps:directions-bus"></iron-icon>
-                </a>
-              </li>
-              <li data-page="reading">
-                <a class="nostyle" href="/?page=reading">
-                  <iron-icon icon="maps:directions-bus"></iron-icon>
-                </a>
-              </li>
-              <li data-page="contact">
-                <a class="nostyle" href="/?page=contact">
-                  <iron-icon icon="maps:directions-bus"></iron-icon>
-                </a>
-              </li>
+            <iron-selector attr-for-selected="data-page" id="ironSelector">
+              <li data-page="about"><a class="nostyle" href="/?page=about">About</a></li>
+              <li data-page="work"><a class="nostyle" href="/?page=work">Work</a></li>
+              <li data-page="blog"><a class="nostyle" href="/?page=blog">Blog</a></li>
+              <li data-page="reading"><a class="nostyle" href="/?page=reading">Reading</a></li>
+              <li data-page="contact"><a class="nostyle" href="/?page=contact">Contact</a></li>
             </iron-selector>
           </ul>
-        </template>
-
       </nav>
     </section>
 
@@ -142,7 +135,8 @@
             },
             activePage: {
               type: String
-            }
+            },
+            largerThanPhone: Boolean
           }
         }
       }
